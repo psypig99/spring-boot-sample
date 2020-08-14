@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.template.springboot.mapper.city.CityMapper">
+<mapper namespace="com.template.springboot.mapper.hello.HelloMapper">
     <select id="selectCityById" resultType="city">
         SELECT
             ID
@@ -18,11 +17,11 @@
               ,NAME
               ,COUNTRY
               ,POPULATION
-          FROM CITY
+          FROM city
     </select>
 
     <insert id="insertCity">
-      INSERT INTO CITY (NAME, COUNTRY, POPULATION)
+      INSERT INTO city (NAME, COUNTRY, POPULATION)
       VALUES (#{name}, #{country}, #{population})
     </insert>
 </mapper>

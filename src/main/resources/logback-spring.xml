@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 60초마다 설정 파일의 변경을 확인하여 변경시 갱신 -->
 <configuration scan="true" scanPeriod="60 seconds">
+
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+
     <!-- springProfile 태그를 사용하면 logback 설정파일에서 복수개의 프로파일을 설정할 수 있음.-->
-    <springProfile name="local">
-        <property resource="logback-local.properties"/>
-    </springProfile>
     <springProfile name="dev">
-        <property resource="logback-dev.properties"/>
+        <property resource="application-dev.properties"/>
+    </springProfile>
+    <springProfile name="test">
+        <property resource="application-test.properties"/>
+    </springProfile>
+    <springProfile name="prod">
+        <property resource="application-prod.properties"/>
     </springProfile>
 
     <!-- Environment 내의 프로퍼티들을 개별적으로 설정할 수 있음.-->
@@ -22,7 +28,7 @@
     <property name="LOG_PATTERN" value="%-5level %d{yy-MM-dd HH:mm:ss}[%thread] [%logger{0}:%line] - %msg%n"/>
 
     <!-- Console Appender -->
-    <appender nam="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <!-- set output pattern -->
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${LOG_PATTERN}</pattern>
@@ -47,6 +53,7 @@
             </timeBasedFileNamingAndTriggeringPolicy>
             <!-- 일자별 로그파일 최대 보관주기(~일), 해당 설정일 이상된 파일은 자동으로 제거 -->
             <maxHistory>30</maxHistory>
+            <totalSizeCap>5GB</totalSizeCap>
         </rollingPolicy>
     </appender>
 
@@ -87,5 +94,16 @@
         <appender-ref ref="FILE"/>
         <appender-ref ref="ERROR"/>
     </logger>
+
+    <!-- log4jdbc 옵션 설정 -->
+    <logger name="jdbc" level="TRACE"/>
+    <logger name="jdbc.connection" level="OFF"/> <!-- 커넥션 open, close 이벤트를 로그로 남김. -->
+    <logger name="jdbc.sqlonly" level="OFF"/> <!-- SQL 문만을 로그로 남기며, PreparedStatement일 경우 관련된 argument 값으로 대체된 SQL 문이 보임.-->
+    <logger name="jdbc.sqltimeing" level="DEBUG"/> <!-- SQL문과 해당 SQL을 실행시키는데 수행된 시간 정보(milliseconds)를 포함함.-->
+    <logger name="jdbc.audit" level="OFF"/> <!-- ResultSet을 제외한 모든 JDBC 호출 정보를 로그로 남긴다. 많은 양의 로그가 생성되므로 특별히 JDBC 문제를 추적해야 할 필요가 있는 경우를 제외하고는 사용을 권장하지 않음.-->
+    <logger name="jdbc.resultset" level="OFF"/> <!-- ResultSet을 포함한 모든 JDBC 호출 정보를 로그로 남기므로 매우 방대한 양의 로그가 생성됨.-->
+    <logger name="jdbc.resultsettable" level="OFF"/> <!-- SQL 결과 조회된 데이터의 table을 로그로 남김.-->
+
+
 </configuration>
 

@@ -1,4 +1,4 @@
-package com.template.springboot.domain.city;
+package com.template.springboot.domain.hello;
 
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
