@@ -1,7 +1,7 @@
-package com.template.springboot.japTest.service;
+package com.template.springboot.jpaTest.service;
 
-import com.template.springboot.japTest.repository.MemberRepository;
-import com.template.springboot.japTest.vo.MemberVO;
+import com.template.springboot.jpaTest.repository.MemberRepository;
+import com.template.springboot.jpaTest.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

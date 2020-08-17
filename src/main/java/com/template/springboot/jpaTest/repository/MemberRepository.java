@@ -1,6 +1,6 @@
-package com.template.springboot.japTest.repository;
+package com.template.springboot.jpaTest.repository;
 
-import com.template.springboot.japTest.vo.MemberVO;
+import com.template.springboot.jpaTest.vo.MemberVO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

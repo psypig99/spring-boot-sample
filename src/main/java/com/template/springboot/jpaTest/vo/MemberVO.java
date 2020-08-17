@@ -1,5 +1,6 @@
-package com.template.springboot.japTest.vo;
+package com.template.springboot.jpaTest.vo;
 
+import javafx.scene.NodeBuilder;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -26,4 +27,5 @@ public class MemberVO {
         this.id = id;
         this.name = name;
     }
+
 }

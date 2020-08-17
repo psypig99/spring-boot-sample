@@ -1,7 +1,7 @@
-package com.template.springboot.japTest.controller;
+package com.template.springboot.jpaTest.controller;
 
-import com.template.springboot.japTest.service.MemberService;
-import com.template.springboot.japTest.vo.MemberVO;
+import com.template.springboot.jpaTest.service.MemberService;
+import com.template.springboot.jpaTest.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
